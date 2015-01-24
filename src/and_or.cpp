@@ -23,23 +23,37 @@ int and_or(char* inputBuffer)
 			}
 			else if(*q=='&')
 			{
+				flag[i]=0;
 				if(*(++q)=='&')
 				{
-					flag[i]=0;
 					*q=' ';
 					*(--q)='\0';
 					p=q;
 					break;
 				}
+				else
+				{
+					--q;
+					p=q;
+					*q='\0';
+					break;
+				}
 			}
 			else if(*q=='|')
 			{
+				flag[i]=1;
 				if(*(++q)=='|')
 				{
-					flag[i]=1;
 					*q=' ';
 					*(--q)='\0';
 					p=q;
+					break;
+				}
+				else
+				{
+					--q;
+					p=q;
+					*q='\0';
 					break;
 				}
 			}
