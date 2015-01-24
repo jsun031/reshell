@@ -2,7 +2,7 @@
 
 int setup(char inputBuffer[])
 {
-	int i,j;
+	int i;
 	char *argv[MAXLINE/2-1];
 	char *p;//=(char*)malloc(MAXLINE*sizeof(char));
 	i=0;
@@ -59,4 +59,5 @@ int setup(char inputBuffer[])
 			perror("fork error\n");
 			exit(1);
 		}
+		return 0;
 }
