@@ -38,6 +38,6 @@ In the directory you git clone, type "make clean" and then delete directory src 
 
 4. If you would like to quit, just type "exit". "exit" would not work with blank, table, semicolon, && or ||.
 
-5.Press table would fill name automatically.
+5. Press table would fill name automatically.
 
 6. Up down left or right could not be used.
