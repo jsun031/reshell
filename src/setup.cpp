@@ -2,13 +2,13 @@
 
 int setup(char inputBuffer[])
 {
-	int i;
+	int i,j;
 	char *argv[MAXLINE/2-1];
 	char *p;//=(char*)malloc(MAXLINE*sizeof(char));
 	i=0;
 	for (p=inputBuffer; ;p++)
 	{
-		while(*p==' ')
+		while(*p==' '||*p=='\t')
 		{
 			p++;
 		}
@@ -16,13 +16,13 @@ int setup(char inputBuffer[])
 			break;
 		//argv[i]=(char*)malloc((MAXLINE/2-1)*sizeof(char));
 		argv[i++]=p;
-		while (*p!=' '&&*p!='\0')
+		while (*p!=' '&&*p!='\0'&&*p!='\t')
 			p++;
 		if(*p=='\0')
 			break;
 		*p='\0';
 		p++;
-		while(*p==' ')
+		while(*p==' '||*p=='\t')
 		{
 			p++;
 		}
@@ -40,23 +40,23 @@ int setup(char inputBuffer[])
 			exit(1);
 		}
 	}
-	else if(pid>0)
-	{
-		int status;
-		if(-1==waitpid(pid,&status,0))
+	else
+		if(pid>0)
 		{
-			perror("wait failure");
+			int status;
+			if(-1==waitpid(pid,&status,0))
+			{
+				perror("wait failure");
+				exit(1);
+			}
+			else
+			{
+				return status;
+			}
+		}
+		else if(pid<0)
+		{
+			perror("fork error\n");
 			exit(1);
 		}
-		else
-		{
-			return status;
-		}
-	}
-	else if(pid<0)
-	{
-		perror("fork error\n");
-		exit(1);
-	}
-	return 0;
 }
