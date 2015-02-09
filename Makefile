@@ -10,6 +10,10 @@ all : rshell ls
 
 rshell : bin $(objects)
 	g++ $(CFLAGS) $(source) -o $(OPATH)rshell
+	
+ls : bin $(objects2)
+	g++ $(CFLAGS) $(source2) -o $(OPATH)ls
+	
 bin: 
 	mkdir bin
 
@@ -24,10 +28,6 @@ and_or.o : and_or.cpp
 
 smcln.o : smcln.cpp 
 	g++ $(CFLAGS) -c $(VPATH)smcln.cpp -o $(OPATH)smcln.o
-
-
-ls : bin $(objects2)
-	g++ $(CFLAGS) $(source2) -o $(OPATH)ls
 
 
 main.o : main.cpp
