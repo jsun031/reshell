@@ -53,7 +53,7 @@ int main(int argc,char** argv)
 	//printf("listname: ");
 	for (int i=0;i<k;i++)
 	{
-		strcmp(listnamsb[i],listname[i]);
+		strcmp(listnamesb[i],listname[i]);
 		listname[i]=listnamesb[i];
 	}
 	allpt(k,listname);
