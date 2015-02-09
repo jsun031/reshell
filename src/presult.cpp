@@ -95,11 +95,8 @@ int PR_al(char *listname[MAXNUM],int k,int flag_dir0,int Rround)
 				printf("\n");//all doc display finishes
 				flag_dir_doc=1;
 			}
-
-			if(k>=2||Rround==1)
-			{
-				printf("%s:\n",dir_name[i2]);
-			}
+			printf("%s:\n",dir_name[i2]);
+			
 
 			char tmp[MAXNUM][MAXLINE];
 			char *tmpp[MAXNUM];
@@ -257,10 +254,8 @@ int PR_l(char *listname[MAXNUM],int k,int flag_dir0,int Rround)//lR
 				flag_dir_doc=1;
 			}
 
-			if(k>=2||Rround==1)
-			{
-				printf("%s:\n",dir_name[i2]);
-			}
+			printf("%s:\n",dir_name[i2]);
+			
 			char tmp[MAXNUM][MAXLINE];
 			char *tmpp[MAXNUM];
 			for(int i4=0;i4<i3;i4++)
@@ -411,11 +406,8 @@ int PR_a(char *listname[MAXNUM],int k,int flag_dir0,int Rround)
 				flag_dir_doc=1;
 			}
 
-			if(k>=2||Rround==1)
-			{
-				printf("%s:\n",dir_name[i2]);
-			}
-
+			printf("%s:\n",dir_name[i2]);
+			
 			char tmp[MAXNUM][MAXLINE];
 			
 			for(int i4=0;i4<i3;i4++)
@@ -567,10 +559,8 @@ int PR(char *listname[MAXNUM],int k,int flag_dir0,int Rround)//R
 				flag_dir_doc=1;
 			}
 
-			if(k>=2||Rround==1)
-			{
-				printf("%s:\n",dir_name[i2]);
-			}
+			printf("%s:\n",dir_name[i2]);
+			
 
 			char tmp[MAXNUM][MAXLINE];
 			
