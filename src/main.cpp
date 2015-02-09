@@ -33,7 +33,7 @@ int main(int argc,char** argv)
 	}
 	//printf("whether it is -a: %d\n",a);
 	int flag_dir0=0;
-	char listnam[MAXNUM][MAXLINE];
+	char listnamesb[MAXNUM][MAXLINE];
 	char *listname[MAXNUM];//[k]all the listname
 	if(k<=1)//no list name, it should be the current
 	{
