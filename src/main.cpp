@@ -2,8 +2,6 @@
 	
 int main(int argc,char** argv)
 {
-	
-	
 	int k=setaprt(argc,argv);//parameter=argv[k]~[argc-1], name list=argv[1]-argv[k-1]
 	
 	char *parameter[MAXNUM];//[argc-k]all the parameter
@@ -11,7 +9,6 @@ int main(int argc,char** argv)
 	{
 		parameter[i-k]=argv[i];
 	}
-	
 	
 	int a=0,l=0,R=0;//mark if there exists a "-a", "-l" or "-R"
 	for (int i1=0;i1<argc-k;i1++ )
@@ -36,6 +33,7 @@ int main(int argc,char** argv)
 	}
 	//printf("whether it is -a: %d\n",a);
 	int flag_dir0=0;
+	char listnam[MAXNUM][MAXLINE];
 	char *listname[MAXNUM];//[k]all the listname
 	if(k<=1)//no list name, it should be the current
 	{
@@ -53,22 +51,30 @@ int main(int argc,char** argv)
 		k=k-1;
 	}//k is the number of list names;
 	//printf("listname: ");
+	for (int i=0;i<k;i++)
+	{
+		strcmp(listnamsb[i],listname[i]);
+		listname[i]=listnamesb[i];
+	}
 	allpt(k,listname);
-
-
+	
+	char doc_namesb[MAXNUM][MAXLINE];
 	const int n1=sp_dir(k,listname);
 	char *doc_name[MAXNUM];//n1 documents
 	for(int i=0;i<n1;i++)
 	{
-		doc_name[i]=listname[i];
+		strcpy(doc_namesb[i],listname[i]);
+		doc_name[i]=doc_namesb[i];
 	}
 	//printf("document name: ");
 	allpt(n1, doc_name);
-
+	
+	char dir_namesb[MAXNUM][MAXLINE];
 	char *dir_name[MAXNUM];//[k-n1]all the parameter
 	for(int i=n1;i<k;i++)
 	{
-		dir_name[i-n1]=listname[i];
+		strcpy(dir_namesb[i-n1],listname[i]);
+		dir_name[i-n1]=dir_namesb[i-n1];
 	}
 	//printf("directory name: ");
 	allpt(k-n1,dir_name);
@@ -94,18 +100,13 @@ int main(int argc,char** argv)
 				
 				if(k-n1>1)mysort(dir_name,k-n1);
 				allpt(k-n1,dir_name);
+				
 				for (int i2=0;i2<k-n1;i2++)
 				{
 					DIR *dirptr = NULL;
 					struct dirent *entry;
-					struct stat s;	
 					char *sort_dir[MAXNUM];
-
-					if(stat(dir_name[i2],&s)!=0)
-					{
-						perror("stat goes wrong!\n");
-						exit(1);
-					}
+					char sort_dirsb[MAXNUM][MAXLINE];
 					
 					if((dirptr = opendir(dir_name[i2])) == NULL)//errot check
 					{
@@ -117,7 +118,8 @@ int main(int argc,char** argv)
 						int i3=0;
 						while ((entry = readdir(dirptr))!=NULL)//error check??
 						{								
-							sort_dir[i3]=entry->d_name;
+							strcpy(sort_dirsb[i3],entry->d_name);
+							sort_dir[i3]=sort_dirsb[i3];
 							i3++;
 							//printf("%s\t", entry->d_name);
 						}
@@ -182,15 +184,8 @@ int main(int argc,char** argv)
 				{
 					DIR *dirptr = NULL;
 					struct dirent *entry;
-					struct stat s;	
 					char *sort_dir[MAXNUM];
-
-					if(stat(dir_name[i2],&s)!=0)
-					{
-						perror("stat goes wrong!\n");
-						exit(1);
-					}
-					
+					char sort_dirsb[MAXNUM][MAXLINE];
 					if((dirptr = opendir(dir_name[i2])) == NULL)//errot check
 					{
 						perror("open dir error !\n");
@@ -203,7 +198,8 @@ int main(int argc,char** argv)
 						{								
 							if(entry->d_name[0]!='.')
 							{
-								sort_dir[i3]=entry->d_name;
+								strcpy(sort_dirsb[i3],entry->d_name);
+								sort_dir[i3]=sort_dirsb[i3];
 								i3++;
 							}							
 							//printf("%s\t", entry->d_name);
@@ -283,14 +279,9 @@ int main(int argc,char** argv)
 				{
 					DIR *dirptr = NULL;
 					struct dirent *entry;
-					struct stat s;	
 					char *sort_dir[MAXNUM];
-
-					if(stat(dir_name[i2],&s)!=0)
-					{
-						perror("stat dir goes wrong!\n");
-						exit(1);
-					}
+					char sort_dirsb[MAXNUM][MAXLINE];
+				
 					
 					if((dirptr = opendir(dir_name[i2])) == NULL)//errot check
 					{
@@ -304,7 +295,8 @@ int main(int argc,char** argv)
 						{								
 							//if(entry->d_name[0]!='.')
 							//{
-								sort_dir[i3]=entry->d_name;
+								strcpy(sort_dirsb[i3],entry->d_name);
+								sort_dir[i3]=sort_dirsb[i3];
 								i3++;
 							//}							
 							//printf("%s\t", entry->d_name);
@@ -392,14 +384,9 @@ int main(int argc,char** argv)
 					//P1Dir_a(listname[i2]);
 					DIR *dirptr = NULL;
 					struct dirent *entry;
-					struct stat s;	
 					char *sort_dir[MAXNUM];
-
-					if(stat(dir_name[i2],&s)!=0)
-					{
-						perror("stat dir goes wrong!\n");
-						exit(1);
-					}
+					
+					char sort_dirsb[MAXNUM][MAXLINE];
 					
 					if((dirptr = opendir(dir_name[i2])) == NULL)//errot check
 					{
@@ -413,7 +400,8 @@ int main(int argc,char** argv)
 						{								
 							if(entry->d_name[0]!='.')
 							{
-								sort_dir[i3]=entry->d_name;
+								strcpy(sort_dirsb[i3],entry->d_name);
+								sort_dir[i3]=sort_dirsb[i3];
 								i3++;
 							}							
 							//printf("%s\t", entry->d_name);
