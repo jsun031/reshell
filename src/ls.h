@@ -34,7 +34,4 @@ int count(int n);
 int lform(int i3, char *tmp[MAXNUM],char*sort_dir[MAXNUM]);
 char* itoa(int value, char* result, int base);
 
-int PR_al(char *listname[MAXNUM],int k,int flag_dir0,int Rround);//alR
-int PR_l(char *listname[MAXNUM],int k,int flag_dir0,int Rround);//lR
-int PR_a(char *listname[MAXNUM],int k,int flag_dir0,int Rround);//Ra
-int PR(char *listname[MAXNUM],int k,int flag_dir0,int Rround);//R
+int Print_result(char *listname[MAXNUM],int k,int flag_dir0,int Rround,int a, int R, int l,int flag_dir_doc=0);
