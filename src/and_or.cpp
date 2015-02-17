@@ -49,13 +49,13 @@ int and_or(char* inputBuffer)
 					p=q;
 					break;
 				}
-				else
+				/*else// single | is pipe
 				{
 					--q;
 					p=q;
 					*q='\0';
 					break;
-				}
+				}*/
 			}
 			else if(*q=='\0')
 			{
