@@ -20,8 +20,18 @@ int lpreprint(struct stat s,int mx,int mxlnk)
 
 	struct passwd *passwd;
 	passwd = getpwuid (s.st_uid);
+    if(passwd==NULL)
+    {
+        perror("getpwuid error!");
+        exit(1);
+    }
 	struct group *group;
 	group = getgrgid (s.st_gid);
+    if(group==NULL)
+    {
+        perror("getgrgid errot!");
+        exit(1);
+    }
 	printf(" %s %s ",passwd->pw_name,group->gr_name);//user name, group name
 
 	char psz[MAXLINE];
@@ -92,7 +102,7 @@ int lform(int i3, char *tmp[MAXNUM],char*sort_dir[MAXNUM])
 		{
 			perror("stat wrong!/n");
 			exit(1);
-		}		
+		}
 
 	}
 	for(int i=0;i<i3;i++)

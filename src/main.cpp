@@ -1,15 +1,15 @@
-#include "ls.h"	
-	
+#include "ls.h"
+
 int main(int argc,char** argv)
 {
 	int k=setaprt(argc,argv);//parameter=argv[k]~[argc-1], name list=argv[1]-argv[k-1]
-	
+
 	char *parameter[MAXNUM];//[argc-k]all the parameter
 	for(int i=k;i<argc;i++)
 	{
 		parameter[i-k]=argv[i];
 	}
-	
+
 	int a=0,l=0,R=0;//mark if there exists a "-a", "-l" or "-R"
 	for (int i1=0;i1<argc-k;i1++ )
 	{
@@ -41,6 +41,11 @@ int main(int argc,char** argv)
 		char buf[MAXLINE];
 		//strcpy(listname[0],".");
 		listname[0]=getcwd(buf,MAXLINE);
+        if(listname[0]==NULL)
+        {
+            perror(¨getcwd error¨);
+            exit(1);
+        }
 		flag_dir0=1;
 	}
 	else
@@ -59,6 +64,6 @@ int main(int argc,char** argv)
 	}
 	allpt(k,listname);
 	Print_result( listname,k, flag_dir0,0,a,R,l,0);
-	
+
 	return 0;
 }
