@@ -29,12 +29,13 @@ int setup(char inputBuffer[])
 		p--;
 	}
 	//free (p);
+	printf("i=%d, argv[i]=%s\n",i,argv[i]);//new add to test
 	argv[i]=NULL;
 	pid_t pid;
 	pid=fork();
 	if (pid==0)
 	{
-		if(execvp(argv[0],argv)!=0)//else is no used, even if succeed, 
+		if(execvp(argv[0],argv)!=0)//else is no used, even if succeed,
 		{
 			perror("execvp fail");
 			exit(1);

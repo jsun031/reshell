@@ -42,8 +42,7 @@ int smcln(char inputBuffer[])
 		}
 		i++;
 	}//i argv[]from 0 to i-1
-	//printf("%d segements by semicolon\n",i);
-	//int result;
+    //printf("%d segements by semicolon\n",i);
 	for (int j=0;j<i;j++)
 	{
 		and_or(input[j]);
