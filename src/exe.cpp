@@ -3,24 +3,49 @@
 int exe(char *input[MAXLINE],int num)
 {
 	char *argv[MAXLINE/2-1][MAXLINE/2-1];
+	int mark[MAXLINE/2-1][MAXLINE/2-1];// relation between i-1 and i
+	int length[MAXLINE/2-1];
 	for (int j=0;j<num;j++)
 	{
-		int i;
+		mark[j][length[j]]=0;
+		argv[j][length[j]]=NULL;
 		char *p;//=(char*)malloc(MAXLINE*sizeof(char));
-		i=0;
+		//int gt_mark=0;//number of continuous greater mark
 		for (p=input[j]; ;p++)
 		{
+			//int continue_num;//continue mark number
+			while(*p==' '||*p=='\t')
+			{
+				p++;
+			}
+			while(*p=='>')
+			{
+				p++;
+				mark[j][length[j]]++;
+			}
 			while(*p==' '||*p=='\t')
 			{
 				p++;
 			}
 			if(*p=='\0')
 				break;
-			argv[j][i++]=p;
-			while (*p!=' '&&*p!='\0'&&*p!='\t')
+			if(*p=='>')
+			{
+				printf("> grammar error!\n");
+				exit(1);
+			}
+			argv[j][length[j]++]=p;
+			while (*p!=' '&&*p!='\0'&&*p!='\t'&&*p!='>')
 				p++;
 			if(*p=='\0')
+			{	
 				break;
+			}
+			/*while (*p=='>')
+			{
+				mark[j][length[j]]++;//>
+				p++;
+			}*/	
 			*p='\0';
 			p++;
 			while(*p==' '||*p=='\t')
@@ -29,25 +54,24 @@ int exe(char *input[MAXLINE],int num)
 			}
 			p--;
 		}
-		argv[j][i]=NULL;
-	}
+		argv[j][length[j]]=NULL;
+	}//length[i] stands for the arguement number of argv[i]
+	
 	for (int i=0;i<num;i++)
 	{
-		int i1=0;
-		while(argv[i][i1]!=NULL)
+		for(int i1=0;i1<length[i];i1++)
 		{
-			printf("argv[%d][%d]=%s\n",i,i1,argv[i][i1]);
-			i1++;
+			printf("argv[%d][%d]=%s mark[%d][%d]=%d\n",i,i1,argv[i][i1],i,i1,mark[i][i1]);
 		}
-	}
-	pid_t p1;
+	}	
+	/*pid_t p1;
 	pid_t pp[MAXLINE];//for wait at last
 	int pipe_id[2];
 
 	int savestdin;
 	if(-1 == (savestdin = dup(0)))
 		perror("wrong with calling dup");
-
+	int flag=0;//> happen, then, there is no origin pipe.
 	for(int i=0;i<num;i++)
 	{
 		if(pipe(pipe_id) < 0)
@@ -59,6 +83,8 @@ int exe(char *input[MAXLINE],int num)
 			pp[i]=p1;
 			printf("This is child_1 process%d\n",getpid());
 
+ 			char *arr[MAXLINE/2-1];
+		
 			if (i!=num-1)// | mark[i]==5&&
 			{
 				if(-1==close(pipe_id[0]))
@@ -78,40 +104,58 @@ int exe(char *input[MAXLINE],int num)
 				    exit(1);
 				}
 			}
-
-			if(execvp(argv[i][0],argv[i])!=0)//else is no used, even if succeed,
+			int tmp;
+			for( int j=0;j<length[i];j++)
+ 			{
+ 				if(mark[j+1]==0)
+ 				{
+ 					arr[tmp++]=argv[i][j];
+ 				}
+ 				else if(mark[j+1]==1)
+ 				{
+ 					j++;
+ 				}
+ 			}
+			if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
 			{
 				perror("execvp fail");
 				exit(1);
 			}
 			return 0;//这个地方非常关键
 		}
-		if ( i!=num-1)// | mark[i]==5&&
+		else if(p1<0)
 		{
-			if(-1==close(pipe_id[1]))
+			perror("fork error!");
+			exit(1)
+		}
+		else if(p1>0)
+		{
+			if ( i!=num-1)// | mark[i]==5&&
 			{
-				perror("close 1 error in parent!");
-				exit(1);
-			}
+				if(-1==close(pipe_id[1]))
+				{
+					perror("close 1 error in parent!");
+					exit(1);
+				}
 				if(dup2(pipe_id[0], 0) == -1)
 				{
 					perror("2nd p dup2");
 					exit(1);
 				}
 				if(-1==close(pipe_id[0]))
-			{
-				perror("close 0 error in parent!");
-				exit(1);
+				{
+					perror("close 0 error in parent!");
+					exit(1);
+				}
 			}
+			perror("1\n");
 		}
-		perror("1\n");
-
 	}
-
+	
 	if(-1 == dup2(savestdin,0))//restore stdin
 		perror("There is an error with dup2. ");
 
-
+	
 	int status[MAXLINE];
     int sum=0;
 	for (int i=0;i<num;i++)
@@ -126,5 +170,6 @@ int exe(char *input[MAXLINE],int num)
 	}
 		printf("This is parent process%d\n",getpid());
         printf("sum of status is %d\n",sum);
-	return sum;
+	return sum;*/
+	return 0;
 }
