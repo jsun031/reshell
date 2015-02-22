@@ -39,15 +39,15 @@ int exe(char *input[MAXLINE],int num)
 			printf("argv[%d][%d]=%s\n",i,i1,argv[i][i1]);
 			i1++;
 		}
-	}	
+	}
 	pid_t p1;
 	pid_t pp[MAXLINE];//for wait at last
 	int pipe_id[2];
-	
+
 	int savestdin;
 	if(-1 == (savestdin = dup(0)))
 		perror("wrong with calling dup");
-	
+
 	for(int i=0;i<num;i++)
 	{
 		if(pipe(pipe_id) < 0)
@@ -78,7 +78,7 @@ int exe(char *input[MAXLINE],int num)
 				    exit(1);
 				}
 			}
- 
+
 			if(execvp(argv[i][0],argv[i])!=0)//else is no used, even if succeed,
 			{
 				perror("execvp fail");
@@ -105,22 +105,26 @@ int exe(char *input[MAXLINE],int num)
 			}
 		}
 		perror("1\n");
-		
+
 	}
-	
+
 	if(-1 == dup2(savestdin,0))//restore stdin
 		perror("There is an error with dup2. ");
 
-	
-	int status;
+
+	int status[MAXLINE];
+    int sum=0;
 	for (int i=0;i<num;i++)
 	{
-		if(-1==waitpid(pp[i],&status,0))
+		if(-1==waitpid(pp[i],&status[i],0))
 		{
 			perror("error");
 			exit(1);
 		}
-		//printf("This is parent process%d\n",getpid());
+        printf("input[%d] status is %d\n",i,status[i]);
+        sum=sum+status[i];
 	}
-	return 0;
+		printf("This is parent process%d\n",getpid());
+        printf("sum of status is %d\n",sum);
+	return sum;
 }

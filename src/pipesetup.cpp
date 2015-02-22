@@ -39,8 +39,8 @@ int pipesetup(char inputBuffer[])//deal with pipe
 	{
 		printf("input[%d]=%s\n",j,input[j]);// , mark[%d]=%d ,j,mark[j]
 	}
-	exe(input,num);
-	return 0;
+    int status=exe(input,num);
+	return status;
 }
 
 
