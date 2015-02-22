@@ -69,6 +69,11 @@ int exe(char *input[MAXLINE],int num)
 		for(int i1=0;i1<length[i];i1++)
 		{
 			printf("argv[%d][%d]=%s mark[%d][%d]=%d\n",i,i1,argv[i][i1],i,i1,mark[i][i1]);
+            if(mark[i][i1]>2)
+            {
+                printf("wrong > number!\n");
+                exit(1);
+            }
 		}
 	}
 	pid_t p1;
@@ -84,8 +89,8 @@ int exe(char *input[MAXLINE],int num)
 	{
 		for( int j=0;j<length[i];j++)
 		{
-			gt_exist[i]=0;
-			if(mark[i][j]==1)
+			//gt_exist[i]=mark[i][j];
+			if(mark[i][j]>0)//> exist
 			{
 				gt_exist[i]=1;
 			}
@@ -197,10 +202,19 @@ int exe(char *input[MAXLINE],int num)
 
 				for(int j=0;j<length[i];j++)
 				{
-					if(mark[i][j]==1)
+					if(mark[i][j]==1||mark[i][j]==2)
 					{
-						int file2=open(argv[i][j],O_WRONLY|O_CREAT,S_IRWXU);
-						if(file2<0)
+                        int file2;
+                        if(mark[i][j]==1)
+                        {
+                            file2=open(argv[i][j],O_WRONLY|O_CREAT|O_TRUNC,S_IRWXU);
+						}
+                        else if(mark[i][j]==2)
+                        {
+                            file2=open(argv[i][j],O_WRONLY|O_CREAT|O_APPEND,S_IRWXU);
+						}
+
+                        if(file2<0)
 						{
 							perror("open file2 error");
 							exit(1);
