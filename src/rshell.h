@@ -12,6 +12,8 @@ using namespace std;
 
 int and_or(char* inputBuffer);
 
-int setup(char inputBuffer[]);
+int pipesetup(char inputBuffer[]);
+
+int exe(char *input[MAXLINE],int num);
 
 int smcln(char inputBuffer[]);

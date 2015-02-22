@@ -73,7 +73,7 @@ int and_or(char* inputBuffer)
 	        printf("input[%d]=%s\n",j,input[j]);*/
 	for (int j=0;(j<i)&&(mark==0);j++)
 	{
-		result=setup(input[j]);
+		result=pipesetup(input[j]);
 		if (flag[j]==0)
 		{
 			mark=result+mark;

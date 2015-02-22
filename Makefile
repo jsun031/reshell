@@ -1,7 +1,7 @@
 VPATH=./src/
 OPATH=./bin/
 objects=rshell.o
-source=$(VPATH)shll6comment.cpp $(VPATH)setup.cpp $(VPATH)and_or.cpp $(VPATH)smcln.cpp
+source=$(VPATH)shll6comment.cpp $(VPATH)pipesetup.cpp $(VPATH)and_or.cpp $(VPATH)smcln.cpp $(VPATH)exe.cpp
 objects2=ls.o
 source2=$(VPATH)main.cpp $(VPATH)preop.cpp $(VPATH)lform.cpp $(VPATH)presult.cpp
 CFLAGS = -ansi -pedantic -Wall -Werror
