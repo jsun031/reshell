@@ -2,12 +2,20 @@
 
 int exe(char *input[MAXLINE],int num)
 {
+	printf("pipe num is %d\n",num);
 	char *argv[MAXLINE/2-1][MAXLINE/2-1];
 	int mark[MAXLINE/2-1][MAXLINE/2-1];// relation between i-1 and i
+	for( int j=0;j<num;j++)
+	{
+		for(int i=0;i<MAXLINE/2-1;i++)
+        {
+            mark[j][i]=0;
+        }
+	}
 	int length[MAXLINE/2-1];
 	for (int j=0;j<num;j++)
 	{
-		mark[j][length[j]]=0;
+		length[j]=0;
 		argv[j][length[j]]=NULL;
 		char *p;//=(char*)malloc(MAXLINE*sizeof(char));
 		//int gt_mark=0;//number of continuous greater mark
@@ -38,14 +46,13 @@ int exe(char *input[MAXLINE],int num)
 			while (*p!=' '&&*p!='\0'&&*p!='\t'&&*p!='>')
 				p++;
 			if(*p=='\0')
-			{	
+			{
 				break;
 			}
-			/*while (*p=='>')
+			if (*p=='>')
 			{
 				mark[j][length[j]]++;//>
-				p++;
-			}*/	
+			}
 			*p='\0';
 			p++;
 			while(*p==' '||*p=='\t')
@@ -56,22 +63,34 @@ int exe(char *input[MAXLINE],int num)
 		}
 		argv[j][length[j]]=NULL;
 	}//length[i] stands for the arguement number of argv[i]
-	
+
 	for (int i=0;i<num;i++)
 	{
 		for(int i1=0;i1<length[i];i1++)
 		{
 			printf("argv[%d][%d]=%s mark[%d][%d]=%d\n",i,i1,argv[i][i1],i,i1,mark[i][i1]);
 		}
-	}	
-	/*pid_t p1;
+	}
+	pid_t p1;
 	pid_t pp[MAXLINE];//for wait at last
 	int pipe_id[2];
 
 	int savestdin;
 	if(-1 == (savestdin = dup(0)))
 		perror("wrong with calling dup");
-	int flag=0;//> happen, then, there is no origin pipe.
+	//int flag=0;//> happen, then, there is no origin pipe.
+	int gt_exist[MAXLINE/2-1];
+	for( int i=0;i<num;i++)
+	{
+		for( int j=0;j<length[i];j++)
+		{
+			gt_exist[i]=0;
+			if(mark[i][j]==1)
+			{
+				gt_exist[i]=1;
+			}
+		}
+	}
 	for(int i=0;i<num;i++)
 	{
 		if(pipe(pipe_id) < 0)
@@ -84,8 +103,38 @@ int exe(char *input[MAXLINE],int num)
 			printf("This is child_1 process%d\n",getpid());
 
  			char *arr[MAXLINE/2-1];
-		
-			if (i!=num-1)// | mark[i]==5&&
+
+			int tmp=0;
+			for( int j=0;j<length[i];j++)
+ 			{
+ 				if(mark[i][j]==0)
+ 				{
+ 					arr[tmp++]=argv[i][j];
+ 				}
+ 			}
+ 			if(gt_exist[i]==0)
+ 			{
+				if (i!=num-1)// | mark[i]==5&&
+				{
+					if(-1==close(pipe_id[0]))
+					{
+					    perror("close 0 error in child!");
+					    exit(1);
+					}
+					if(dup2(pipe_id[1], 1) == -1)
+					{
+						perror("1st dup2");
+						exit(1);
+					}
+
+					/*if(-1==close(pipe_id[1]))
+					{
+					    perror("close 1 error in child!");
+					    exit(1);
+					}*/
+				}
+			}
+			else if (gt_exist[i]==1)
 			{
 				if(-1==close(pipe_id[0]))
 				{
@@ -97,25 +146,7 @@ int exe(char *input[MAXLINE],int num)
 					perror("1st dup2");
 					exit(1);
 				}
-
-				if(-1==close(pipe_id[1]))
-				{
-				    perror("close 1 error in child!");
-				    exit(1);
-				}
 			}
-			int tmp;
-			for( int j=0;j<length[i];j++)
- 			{
- 				if(mark[j+1]==0)
- 				{
- 					arr[tmp++]=argv[i][j];
- 				}
- 				else if(mark[j+1]==1)
- 				{
- 					j++;
- 				}
- 			}
 			if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
 			{
 				perror("execvp fail");
@@ -126,11 +157,32 @@ int exe(char *input[MAXLINE],int num)
 		else if(p1<0)
 		{
 			perror("fork error!");
-			exit(1)
+			exit(1);
 		}
 		else if(p1>0)
 		{
-			if ( i!=num-1)// | mark[i]==5&&
+			if(gt_exist[i]==0)
+			{
+				if ( i!=num-1)// | mark[i]==5&&
+				{
+					if(-1==close(pipe_id[1]))
+					{
+						perror("close 1 error in parent!");
+						exit(1);
+					}
+					if(dup2(pipe_id[0], 0) == -1)
+					{
+						perror("2nd p dup2");
+						exit(1);
+					}
+					/*if(-1==close(pipe_id[0]))
+					{
+						perror("close 0 error in parent!");
+						exit(1);
+					}*/
+				}
+			}
+			else if (gt_exist[i]==1)
 			{
 				if(-1==close(pipe_id[1]))
 				{
@@ -142,20 +194,54 @@ int exe(char *input[MAXLINE],int num)
 					perror("2nd p dup2");
 					exit(1);
 				}
-				if(-1==close(pipe_id[0]))
+
+				for(int j=0;j<length[i];j++)
 				{
-					perror("close 0 error in parent!");
-					exit(1);
+					if(mark[i][j]==1)
+					{
+						int file2=open(argv[i][j],O_WRONLY|O_CREAT,S_IRWXU);
+						if(file2<0)
+						{
+							perror("open file2 error");
+							exit(1);
+						}
+						char str[BUFSIZ];
+						ssize_t readsize=read(0,str,BUFSIZ);
+						if(readsize<0)
+						{
+							perror("read error!");
+							exit(1);
+						}
+						while(readsize>0)
+						{
+							if(-1==write(file2,str,readsize))
+							{
+								perror("write error!");
+								exit(1);
+							}
+							readsize=read(0,str,BUFSIZ);
+						}
+						if(readsize<0)
+						{
+							perror("read error!");
+							exit(1);
+						}
+						if(close(file2)<0)
+						{
+							perror("close 2 error");
+							exit(1);
+						}
+					}
 				}
 			}
-			perror("1\n");
 		}
+		perror("1\n");
 	}
-	
+
 	if(-1 == dup2(savestdin,0))//restore stdin
 		perror("There is an error with dup2. ");
 
-	
+
 	int status[MAXLINE];
     int sum=0;
 	for (int i=0;i<num;i++)
@@ -165,11 +251,10 @@ int exe(char *input[MAXLINE],int num)
 			perror("error");
 			exit(1);
 		}
-        printf("input[%d] status is %d\n",i,status[i]);
+        printf("child[%d] status is %d\n",i,status[i]);
         sum=sum+status[i];
 	}
 		printf("This is parent process%d\n",getpid());
         printf("sum of status is %d\n",sum);
-	return sum;*/
-	return 0;
+	return sum;
 }
