@@ -43,7 +43,7 @@ int main(int argc,char** argv)
 		listname[0]=getcwd(buf,MAXLINE);
         if(listname[0]==NULL)
         {
-            perror(¨getcwd error¨);
+            perror("getcwd error");
             exit(1);
         }
 		flag_dir0=1;

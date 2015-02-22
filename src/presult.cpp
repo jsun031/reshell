@@ -1,4 +1,5 @@
 #include "ls.h"
+
 int Print_result(char *listname[MAXNUM],int k,int flag_dir0,int Round ,int a, int R, int l,int flag_dir_doc)
 {
 	//printf("PR_al listname: ");
@@ -113,6 +114,7 @@ int Print_result(char *listname[MAXNUM],int k,int flag_dir0,int Round ,int a, in
 		else//normal display
 		{
 			int i3=0;
+			int errno=0;
 			while ((entry = readdir(dirptr))!=NULL)//error check??
 			{								
 				if(a==0)
@@ -128,6 +130,11 @@ int Print_result(char *listname[MAXNUM],int k,int flag_dir0,int Round ,int a, in
 					sort_dir[i3]=entry->d_name;
 					i3++;
 				}
+			}
+			if(errno!=0)
+			{
+				perror("readdir erroe!");
+				exit(1);
 			}
 			if(i3>1)mysort(sort_dir,i3);
 			if((Round==1)||((k-n1>1)&&(i3)))//newline between dir and dir
