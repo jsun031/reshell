@@ -87,6 +87,7 @@ int exe(char *input[MAXLINE],int num)
 	int gt_exist[MAXLINE/2-1];
 	for( int i=0;i<num;i++)
 	{
+		gt_exist[i]=0;
 		for( int j=0;j<length[i];j++)
 		{
 			//gt_exist[i]=mark[i][j];
@@ -132,15 +133,16 @@ int exe(char *input[MAXLINE],int num)
 						exit(1);
 					}
 
-					/*if(-1==close(pipe_id[1]))
+					if(-1==close(pipe_id[1]))
 					{
 					    perror("close 1 error in child!");
 					    exit(1);
-					}*/
+					}
 				}
 			}
 			else if (gt_exist[i]==1)
 			{
+				
 				if(-1==close(pipe_id[0]))
 				{
 				    perror("close 0 error in child!");
@@ -151,6 +153,72 @@ int exe(char *input[MAXLINE],int num)
 					perror("1st dup2");
 					exit(1);
 				}
+				
+				if(-1==close(pipe_id[1]))
+				{
+					perror("close 1 error in parent!");
+					exit(1);
+				}
+				if(i==num-1)
+				{ 
+					gt_exist[i]=0;
+				}
+				/*
+				if(dup2(pipe_id[0], 0) == -1)
+				{
+					perror("2nd p dup2");
+					exit(1);
+				}*/
+				//close(0);
+				/*for(int j=0;j<length[i];j++)
+				{
+					if(mark[i][j]==1||mark[i][j]==2)
+					{
+                        int file2;
+                        if(mark[i][j]==1)
+                        {
+                            file2=open(argv[i][j],O_WRONLY|O_CREAT|O_TRUNC,S_IRWXU);
+						}
+                        else if(mark[i][j]==2)
+                        {
+                            file2=open(argv[i][j],O_WRONLY|O_CREAT|O_APPEND,S_IRWXU);
+						}
+
+                        if(file2<0)
+						{
+							perror("open file2 error");
+							exit(1);
+						}
+						char str[BUFSIZ];
+						ssize_t readsize=read(1,str,BUFSIZ);
+						if(readsize<0)
+						{
+							perror("read error!");
+							exit(1);
+						}
+						while(readsize>0)
+						{
+							if(-1==write(file2,str,readsize))
+							{
+								perror("write error!");
+								exit(1);
+							}
+							readsize=read(1,str,BUFSIZ);
+						}
+						if(readsize<0)
+						{
+							perror("read error!");
+							exit(1);
+						}
+						if(close(file2)<0)
+						{
+							perror("close 2 error");
+							exit(1);
+						}
+						close(1);
+					}
+				}*/
+
 			}
 			if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
 			{
@@ -180,11 +248,11 @@ int exe(char *input[MAXLINE],int num)
 						perror("2nd p dup2");
 						exit(1);
 					}
-					/*if(-1==close(pipe_id[0]))
+					if(-1==close(pipe_id[0]))
 					{
 						perror("close 0 error in parent!");
 						exit(1);
-					}*/
+					}
 				}
 			}
 			else if (gt_exist[i]==1)
