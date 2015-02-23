@@ -69,12 +69,12 @@ int and_or(char* inputBuffer)
 	//printf("%d segements and_or\n",i) ;
 	int result;
 	int mark=0;//true, need to continue
-	for (int j=0;j<i;j++)
-	        printf("input[%d]=%s\n",j,input[j]);
+	/*for (int j=0;j<i;j++)
+	        printf("input[%d]=%s\n",j,input[j]);*/
 	for (int j=0;(j<i)&&(mark==0);j++)
 	{
 		result=pipesetup(input[j]);
-        printf("input[%d] return value is %d\n",j,result);
+        	//printf("input[%d] return value is %d\n",j,result);
    		if (flag[j]==0)
 		{
 			mark=result+mark;

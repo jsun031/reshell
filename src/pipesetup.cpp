@@ -35,11 +35,11 @@ int pipesetup(char inputBuffer[])//deal with pipe
 		}
 		num++;
 	}//i argv[]from 0 to i-1
-	for (int j=0;j<num;j++)
+	/*for (int j=0;j<num;j++)
 	{
 		printf("input[%d]=%s\n",j,input[j]);// , mark[%d]=%d ,j,mark[j]
-	}
-    int status=exe(input,num);
+	}*/
+    	int status=exe(input,num);
 	return status;
 }
 

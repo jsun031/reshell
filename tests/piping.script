@@ -1,0 +1,249 @@
+Script started on Mon 23 Feb 2015 12:00:27 PM PST
+]0;jysun@jysun-vir-machine: ~/cs100/newrshell/rshelljysun@jysun-vir-machine:~/cs100/newrshell/rshell$ make
+g++ -g -ansi -pedantic -Wall -Werror  ./src/shll6comment.cpp ./src/pipesetup.cpp ./src/and_or.cpp ./src/smcln.cpp ./src/exe.cpp ./src/rshell.h -o ./bin/rshell.o
+g++ -g -ansi -pedantic -Wall -Werror ./src/shll6comment.cpp ./src/pipesetup.cpp ./src/and_or.cpp ./src/smcln.cpp ./src/exe.cpp -o ./bin/rshell
+g++ -g -ansi -pedantic -Wall -Werror  ./src/shll6comment.cpp ./src/pipesetup.cpp ./src/and_or.cpp ./src/smcln.cpp ./src/exe.cpp ./src/ls.h -o ./bin/main.o
+g++ -g -ansi -pedantic -Wall -Werror ./src/main.cpp ./src/preop.cpp ./src/lform.cpp ./src/presult.cpp -o ./bin/ls
+]0;jysun@jysun-vir-machine: ~/cs100/newrshell/rshelljysun@jysun-vir-machine:~/cs100/newrshell/rshell$ ./bin/rshell
+COMMAND->ls > o1
+COMMAND->cat < o1
+bin
+LICENSE
+Makefile
+o1
+piping.script
+README.md
+src
+tests
+COMMAND->ls	>o1
+COMMAND->cat>	o          	>o1^[[D^[[D\            <o1
+bin
+LICENSE
+Makefile
+o1
+piping.script
+README.md
+src
+tests
+COMMAND->ls>o2
+COMMAND->cat<o2
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+COMMAND->ls >> o2
+COMMAND->cat  							<					o2
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+COMMAND->ls>>o2
+COMMAND->cat<o2
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+COMMAND->ls				>>o2^[[D          ps			>>o2
+COMMAND->a m cat<o2
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+  PID TTY          TIME CMD
+21181 pts/14   00:00:00 bash
+21318 pts/14   00:00:00 rshell
+21362 pts/14   00:00:00 ps
+COMMAND->ps e wd<<				o2
+pwd: ignoring non-option arguments
+/home/jysun/cs100/newrshell/rshell
+COMMAND->pwd>>			o2
+COMMAND->cat<o2
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+  PID TTY          TIME CMD
+21181 pts/14   00:00:00 bash
+21318 pts/14   00:00:00 rshell
+21362 pts/14   00:00:00 ps
+/home/jysun/cs100/newrshell/rshell
+COMMAND->pwd|cat
+/home/jysun/cs100/newrshell/rshell
+COMMAND->pwd | cat
+/home/jysun/cs100/newrshell/rshell
+COMMAND->pwd				|				cat
+/home/jysun/cs100/newrshell/rshell
+COMMAND->ps >o3 >>o2
+COMMAND->cat<o3<o2
+  PID TTY          TIME CMD
+21181 pts/14   00:00:00 bash
+21318 pts/14   00:00:00 rshell
+21382 pts/14   00:00:00 ps
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+bin
+LICENSE
+Makefile
+o1
+o2
+piping.script
+README.md
+src
+tests
+  PID TTY          TIME CMD
+21181 pts/14   00:00:00 bash
+21318 pts/14   00:00:00 rshell
+21362 pts/14   00:00:00 ps
+/home/jysun/cs100/newrshell/rshell
+COMMAND->pwe d>o4|tr a-z A-Z\ |cat
+COMMAND->pwd   cat <o4
+/home/jysun/cs100/newrshell/rshell
+COMMAND->pwd|tr a-z A-Z|cat
+/HOME/JYSUN/CS100/NEWRSHELL/RSHELL
+COMMAND->pwd|tr a_ -z A-Z|cat >o 4 >o4
+COMMAND->cat<o4
+/home/jysun/cs100/newrshell/rshell
+/HOME/JYSUN/CS100/NEWRSHELL/RSHELL
+COMMAND->pwd|tr a-z A-Z|cat >o4
+COMMAND->cat<o4
+/HOME/JYSUN/CS100/NEWRSHELL/RSHELL
+COMMAND->cat<o4|tr a_  A_ -Za  a-z|cat>o  
+/home/jysun/cs100/newrshell/rshell
+COMMAND->cat<o2|tail2|hean d -1^[[D              -s 2|head _1  -1
+21362 pts/14   00:00:00 ps
+COMMAND->cat<o1
+bin
+LICENSE
+Makefile
+o1
+piping.script
+README.md
+src
+tests
+COMMAND->cat<o1|^[[D     		|r tr a-z		A-Z| tee o5| r tr A-Z a-z >o6
+COMMAND->cat<o5<o6
+BIN
+LICENSE
+MAKEFILE
+O1
+PIPING.SCRIPT
+README.MD
+SRC
+TESTS
+bin
+license
+makefile
+o1
+piping.script
+readme.md
+src
+tests
+COMMAND->exit
+]0;jysun@jysun-vir-machine: ~/cs100/newrshell/rshelljysun@jysun-vir-machine:~/cs100/newrshell/rshell$ exit
+exit
+
+Script done on Mon 23 Feb 2015 12:15:00 PM PST

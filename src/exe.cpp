@@ -2,7 +2,7 @@
 
 int exe(char *input[MAXLINE],int num)
 {
-	printf("pipe num is %d\n",num);
+	//printf("pipe num is %d\n",num);
 	char *argv[MAXLINE/2-1][MAXLINE/2-1];
 	int mark[MAXLINE/2-1][MAXLINE/2-1];// relation between i-1 and i
 	for( int j=0;j<num;j++)
@@ -22,7 +22,7 @@ int exe(char *input[MAXLINE],int num)
 		for (p=input[j]; ;p++)
 		{
 			//int continue_num;//continue mark number
-			while(*p==' '||*p=='\t')
+			while(*p==' '||*p=='\t'||*p=='<')
 			{
 				p++;
 			}
@@ -43,7 +43,7 @@ int exe(char *input[MAXLINE],int num)
 				exit(1);
 			}
 			argv[j][length[j]++]=p;
-			while (*p!=' '&&*p!='\0'&&*p!='\t'&&*p!='>')
+			while (*p!=' '&&*p!='\0'&&*p!='\t'&&*p!='>'&&*p!='<')
 				p++;
 			if(*p=='\0')
 			{
@@ -55,7 +55,7 @@ int exe(char *input[MAXLINE],int num)
 			}
 			*p='\0';
 			p++;
-			while(*p==' '||*p=='\t')
+			while(*p==' '||*p=='\t'||*p=='<')
 			{
 				p++;
 			}
@@ -68,7 +68,7 @@ int exe(char *input[MAXLINE],int num)
 	{
 		for(int i1=0;i1<length[i];i1++)
 		{
-			printf("argv[%d][%d]=%s mark[%d][%d]=%d\n",i,i1,argv[i][i1],i,i1,mark[i][i1]);
+			//printf("argv[%d][%d]=%s mark[%d][%d]=%d\n",i,i1,argv[i][i1],i,i1,mark[i][i1]);
             if(mark[i][i1]>2)
             {
                 printf("wrong > number!\n");
@@ -106,7 +106,7 @@ int exe(char *input[MAXLINE],int num)
 		if((p1=fork())==0)
 		{
 			pp[i]=p1;
-			printf("This is child_1 process%d\n",getpid());
+			//printf("This is child_1 process%d\n",getpid());
 
  			char *arr[MAXLINE/2-1];
 
@@ -272,21 +272,27 @@ int exe(char *input[MAXLINE],int num)
 				{
 					if(mark[i][j]==1||mark[i][j]==2)
 					{
-                        int file2;
-                        if(mark[i][j]==1)
-                        {
-                            file2=open(argv[i][j],O_WRONLY|O_CREAT|O_TRUNC,S_IRWXU);
+						int file2;
+						if(mark[i][j]==1)
+						{
+						    file2=open(argv[i][j],O_WRONLY|O_CREAT|O_TRUNC,S_IRWXU);
+						    if(file2<0)
+							{
+								perror("open file2 error");
+								exit(1);
+							}
 						}
-                        else if(mark[i][j]==2)
-                        {
-                            file2=open(argv[i][j],O_WRONLY|O_CREAT|O_APPEND,S_IRWXU);
+						else if(mark[i][j]==2)
+						{
+						    file2=open(argv[i][j],O_WRONLY|O_CREAT|O_APPEND,S_IRWXU);
+						    if(file2<0)
+							{
+								perror("open file2 error");
+								exit(1);
+							}
 						}
 
-                        if(file2<0)
-						{
-							perror("open file2 error");
-							exit(1);
-						}
+
 						char str[BUFSIZ];
 						ssize_t readsize=read(0,str,BUFSIZ);
 						if(readsize<0)
@@ -317,7 +323,7 @@ int exe(char *input[MAXLINE],int num)
 				}
 			}
 		}
-		perror("1\n");
+		//perror("1\n");
 	}
 
 	if(-1 == dup2(savestdin,0))//restore stdin
@@ -333,10 +339,10 @@ int exe(char *input[MAXLINE],int num)
 			perror("error");
 			exit(1);
 		}
-        printf("child[%d] status is %d\n",i,status[i]);
+        //printf("child[%d] status is %d\n",i,status[i]);
         sum=sum+status[i];
 	}
-		printf("This is parent process%d\n",getpid());
-        printf("sum of status is %d\n",sum);
+	//printf("This is parent process%d\n",getpid());
+        //printf("sum of status is %d\n",sum);
 	return sum;
 }
