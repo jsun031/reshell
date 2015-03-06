@@ -93,12 +93,12 @@ int exe(char *input[MAXLINE],int num)
 				perror("close 1 error in parent!");
 				exit(1);
 			}
-				if(dup2(pipe_id[0], 0) == -1)
-				{
-					perror("2nd p dup2");
-					exit(1);
-				}
-				if(-1==close(pipe_id[0]))
+			if(dup2(pipe_id[0], 0) == -1)
+			{
+				perror("2nd p dup2");
+				exit(1);
+			}
+			if(-1==close(pipe_id[0]))
 			{
 				perror("close 0 error in parent!");
 				exit(1);
@@ -124,7 +124,7 @@ int exe(char *input[MAXLINE],int num)
         printf("input[%d] status is %d\n",i,status[i]);
         sum=sum+status[i];
 	}
-		printf("This is parent process%d\n",getpid());
+	printf("This is parent process%d\n",getpid());
         printf("sum of status is %d\n",sum);
 	return sum;
 }
