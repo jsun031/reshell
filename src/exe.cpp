@@ -113,7 +113,7 @@ int exe(char *input[MAXLINE],int num)
 
 
 	int status[MAXLINE];
-    int sum=0;
+    	int sum=0;
 	for (int i=0;i<num;i++)
 	{
 		if(-1==waitpid(pp[i],&status[i],0))
