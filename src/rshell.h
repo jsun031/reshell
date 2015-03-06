@@ -6,7 +6,14 @@
 #include <iostream>
 #include <errno.h>
 #include <stdlib.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <pwd.h>
+#include <grp.h>
 #define MAXLINE 80
+#define MAXNUM 100
 
 using namespace std;
 

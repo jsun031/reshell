@@ -1,5 +1,91 @@
 #include "rshell.h"
 
+int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
+{
+	char *getenvBuffer;
+	getenvBuffer=getenv("PATH"); /* get the comspec environment parameter */
+	char *p;//not malloc(MAXLINE*sizeof(char));
+	char *input[MAXLINE];
+	int num=0;
+	for (p=getenvBuffer; ;p++)
+	{
+		if(*p=='\0')
+		{
+			break;
+		}
+		// not malloc(MAXLINE*sizeof(char));
+		input[num]=p;
+		char*q;//not malloc(MAXLINE*sizeof(char));
+		for(q=p;;q++)
+		{
+			if(*q!=':'&&*q!='\0')
+			{
+				continue;
+			}
+			else if(*q==':')
+			{
+				*q='\0';
+				p=q;
+				break;
+			}
+			else if(*q=='\0')
+			{
+				p=q;
+				p--;//as p++ forloop, guarantee exit
+				break;
+			}
+		}
+		num++;
+	}//i argv[]from 0 to i-1
+	for (int j=0;j<num;j++)
+	{
+		strcpy(dir_name[j],input[j]);
+		strcat(dir_name[j],"/");
+		//printf("input[%d]=%s\n",j,input[j]);// , mark[%d]=%d ,j,mark[j]
+	}
+    int i4=0;
+	for (int i2=0;i2<num;i2++)
+	{
+		DIR *dirptr = NULL;
+		struct dirent *entry;
+		struct stat s;
+		//char *sort_dir[MAXNUM];
+		if(stat(dir_name[i2],&s)!=0)
+		{
+			perror("stat dir goes wrong!\n");
+			exit(1);
+		}
+		if((dirptr = opendir(dir_name[i2])) == NULL)//errot check
+		{
+			perror("open dir error !\n");
+			exit (1);
+		}
+		else//normal display
+		{
+			int i3=0;
+			//int errno=0;
+			while ((entry = readdir(dirptr))!=NULL)//error check??
+			{
+				if(strcmp(entry->d_name,argv)==0)
+				{
+					strcpy(key_name,dir_name[i2]);
+					strcat(key_name,argv);
+                    i3++;
+				}
+			}
+			if(errno!=0)
+			{
+				perror("readdir erroe!");
+				exit(1);
+			}
+            if(i3>0)
+            {
+                i4=1;
+            }
+		}
+	}
+	return i4;
+}
 int exe(char *input[MAXLINE],int num)
 {
 	//printf("pipe num is %d\n",num);
@@ -163,10 +249,32 @@ int exe(char *input[MAXLINE],int num)
 					gt_exist[i]=0;
 				}
 			}
-			if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
+			char separatestring[MAXNUM][MAXLINE];
+			char *dir_name[MAXNUM];
+			for(int i=0;i<10;i++)
 			{
-				perror("execvp fail");
-				exit(1);
+				dir_name[i]=separatestring[i];
+			}
+			char keyname[MAXLINE]="\0";
+			char *key=keyname;
+			if(strcmp(arr[0],"\0")==0)
+			{
+				printf("you need to give 1 argement\n");
+				return 0;
+			}
+		   	int num=setpath(dir_name,arr[0],key);
+			if(num!=0)
+			{
+				//if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
+				if(execv(key,arr)!=0)
+				{
+					perror("execv fail");
+					exit(1);
+				}
+			}
+			else
+			{
+				printf("No valid path!\n");
 			}
 			return 0;//这个地方非常关键
 		}
