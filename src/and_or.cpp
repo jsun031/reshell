@@ -74,7 +74,7 @@ int and_or(char* inputBuffer)
 	for (int j=0;(j<i)&&(mark==0);j++)
 	{
 		result=pipesetup(input[j]);
-        printf("input[%d] return value is %d\n",j,result);
+        	printf("input[%d] return value is %d\n",j,result);
    		if (flag[j]==0)
 		{
 			mark=result+mark;
