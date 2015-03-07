@@ -63,7 +63,7 @@ int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 		else//normal display
 		{
 			int i3=0;
-			//int errno=0;
+			errno=0;
 			while ((entry = readdir(dirptr))!=NULL)//error check??
 			{
 				if(strcmp(entry->d_name,argv)==0)
@@ -75,6 +75,9 @@ int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 			}
 			if(errno!=0)
 			{
+				printf("errno=%d\n",errno);
+				char * mesg = strerror(errno);
+				printf("Mesg:%s\n",mesg);
 				perror("readdir erroe!");
 				exit(1);
 			}
@@ -227,7 +230,7 @@ int exe(char *input[MAXLINE],int num)
 			}
 			else if (gt_exist[i]==1)
 			{
-				
+
 				if(-1==close(pipe_id[0]))
 				{
 				    perror("close 0 error in child!");
@@ -238,22 +241,40 @@ int exe(char *input[MAXLINE],int num)
 					perror("1st dup2");
 					exit(1);
 				}
-				
+
 				if(-1==close(pipe_id[1]))
 				{
 					perror("close 1 error in parent!");
 					exit(1);
 				}
 				if(i==num-1)
-				{ 
+				{
 					gt_exist[i]=0;
 				}
 			}
+
+            if(strcmp(arr[0],"cd")==0)
+            {
+                if(chdir(arr[1])!=0)
+                {
+                    perror("chdir\n");
+                    exit(1);
+                }
+                char s[100];
+                //chdir("/tmp");
+                printf("current working directory: %s\n", getcwd(s,100));
+                //chdir(".");
+                for (int i0=0;i0<length[i];i0++)
+                {
+                    memset(argv[i][i0],0,strlen(argv[i][i0]));
+                }
+                return 0;
+            }
 			char separatestring[MAXNUM][MAXLINE];
 			char *dir_name[MAXNUM];
-			for(int i=0;i<10;i++)
+			for(int i1=0;i1<MAXNUM;i1++)
 			{
-				dir_name[i]=separatestring[i];
+				dir_name[i1]=separatestring[i1];
 			}
 			char keyname[MAXLINE]="\0";
 			char *key=keyname;
@@ -265,6 +286,8 @@ int exe(char *input[MAXLINE],int num)
 		   	int num=setpath(dir_name,arr[0],key);
 			if(num!=0)
 			{
+                for(int i5=0;i5<length[i];i5++)
+                    printf("argv[%d][%d]=%s\n",i,i5,argv[i][i5]);
 				//if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
 				if(execv(key,arr)!=0)
 				{
