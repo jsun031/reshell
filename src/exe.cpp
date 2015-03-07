@@ -210,8 +210,13 @@ int exe(char *input[MAXLINE],int num)
 		{
 			perror("pipe");
 		}
+		errno=0;
 		signal(SIGINT, handle_signal);
-		
+		if(errno!=0)
+		{
+			perror("signal error!");
+			exit(1);
+		}			
 		if((childp1=fork())==0)
 		{
 			pp[i]=childp1;

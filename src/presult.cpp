@@ -133,7 +133,7 @@ int Print_result(char *listname[MAXNUM],int k,int flag_dir0,int Round ,int a, in
 			}
 			if(errno!=0)
 			{
-				perror("readdir erroe!");
+				perror("readdir error!");
 				exit(1);
 			}
 			if(i3>1)mysort(sort_dir,i3);
