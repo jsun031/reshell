@@ -8,6 +8,7 @@ int main()
 
 	while (1)
 	{
+        memset(inputBuffer,0,MAXLINE);
 		printf ("COMMAND->");
 		cin.getline(inputBuffer,MAXLINE);
 		//int result;

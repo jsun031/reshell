@@ -1,9 +1,15 @@
 #include "rshell.h"
 
+int childp1;
+
 int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 {
+    char *once;
+    char Buffer[MAXLINE];
 	char *getenvBuffer;
-	getenvBuffer=getenv("PATH"); /* get the comspec environment parameter */
+	once=getenv("PATH"); /* get the comspec environment parameter */
+    strcpy(Buffer,once);
+    getenvBuffer=Buffer;
 	char *p;//not malloc(MAXLINE*sizeof(char));
 	char *input[MAXLINE];
 	int num=0;
@@ -89,6 +95,18 @@ int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 	}
 	return i4;
 }
+
+void handle_signal(int sig)
+{
+	// cout << "in signal " << childPid << endl;
+	cout << endl;
+	if(childp1 != 1)
+	{
+		if(-1 == kill(childp1,SIGKILL))
+			perror("kill");
+	}
+}
+
 int exe(char *input[MAXLINE],int num)
 {
 	//printf("pipe num is %d\n",num);
@@ -165,7 +183,7 @@ int exe(char *input[MAXLINE],int num)
 			}
 		}
 	}
-	pid_t p1;
+
 	pid_t pp[MAXLINE];//for wait at last
 	int pipe_id[2];
 
@@ -192,9 +210,11 @@ int exe(char *input[MAXLINE],int num)
 		{
 			perror("pipe");
 		}
-		if((p1=fork())==0)
+		signal(SIGINT, handle_signal);
+		
+		if((childp1=fork())==0)
 		{
-			pp[i]=p1;
+			pp[i]=childp1;
 
  			char *arr[MAXLINE/2-1];
 
@@ -206,6 +226,7 @@ int exe(char *input[MAXLINE],int num)
  					arr[tmp++]=argv[i][j];
  				}
  			}
+            arr[tmp]='\0';//exe requires last argument to be null
  			if(gt_exist[i]==0)
  			{
 				if (i!=num-1)// | mark[i]==5&&
@@ -253,23 +274,28 @@ int exe(char *input[MAXLINE],int num)
 				}
 			}
 
+            //char s[100];
+
             if(strcmp(arr[0],"cd")==0)
             {
+                //printf("current working directory: %s\n", getcwd(s,100));
                 if(chdir(arr[1])!=0)
                 {
                     perror("chdir\n");
                     exit(1);
                 }
-                char s[100];
-                //chdir("/tmp");
-                printf("current working directory: %s\n", getcwd(s,100));
+                //printf("current working directory: %s\n", getcwd(s,100));
                 //chdir(".");
-                for (int i0=0;i0<length[i];i0++)
+                /*for (int i0=0;i0<length[i];i0++)
                 {
                     memset(argv[i][i0],0,strlen(argv[i][i0]));
-                }
+                }*/
                 return 0;
             }
+            //else
+            //{
+            //    chdir(".");
+            //}
 			char separatestring[MAXNUM][MAXLINE];
 			char *dir_name[MAXNUM];
 			for(int i1=0;i1<MAXNUM;i1++)
@@ -286,9 +312,13 @@ int exe(char *input[MAXLINE],int num)
 		   	int num=setpath(dir_name,arr[0],key);
 			if(num!=0)
 			{
-                for(int i5=0;i5<length[i];i5++)
-                    printf("argv[%d][%d]=%s\n",i,i5,argv[i][i5]);
+                //printf("path=%s\n",getenv("PATH"));
+                //for(int i5=0;i5<length[i];i5++)
+                //    printf("key=%s,arr[%d][%d]=%s\n",key,i,i5,arr[i5]);
 				//if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
+                //strcpy(arr[0],"/bin/ls");
+                //strncat(arr[0],"\0",1);
+             //   printf("current working directory: %s\n", getcwd(s,100));
 				if(execv(key,arr)!=0)
 				{
 					perror("execv fail");
@@ -296,17 +326,23 @@ int exe(char *input[MAXLINE],int num)
 				}
 			}
 			else
-			{
+			{	
+				if(execv(arr[0],arr)!=0)
+				{
+					perror("execv fail");
+					exit(1);
+				}
+			
 				printf("No valid path!\n");
 			}
 			return 0;//这个地方非常关键
 		}
-		else if(p1<0)
+		else if(childp1<0)
 		{
 			perror("fork error!");
 			exit(1);
 		}
-		else if(p1>0)
+		else if(childp1>0)
 		{
 			if(gt_exist[i]==0)
 			{
