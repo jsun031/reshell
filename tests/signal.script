@@ -1,0 +1,78 @@
+脚本启动于 Sat 07 Mar 2015 12:43:49 AM PST
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin.[K/rshell
+COMMAND->ls
+a.out  bin  LICENSE  Makefile  README.md  signal.script  src  tests  try.cpp
+COMMAND->bin/ls
+a.out	bin	LICENSE	Makefile	README.md	signal.script	src	tests	try.cpp	
+COMMAND->b pwd&&bin/ls
+/home/js/cs100/origin/rshell
+a.out	bin	LICENSE	Makefile	README.md	signal.script	src	tests	try.cpp	
+COMMAND->bin. /ls&&pwd
+a.out	bin	LICENSE	Makefile	README.md	signal.script	src	tests	try.cpp	
+/home/js/cs100/origin/rshell
+COMMAND->cd .
+COMMAND->pwd
+/home/js/cs100/origin/rshell
+COMMAND->cd ..
+COMMAND->pwd
+/home/js/cs100/origin
+COMMAND->cd res  shell
+COMMAND->pwd
+/home/js/cs100/origin/rshell
+COMMAND->cd srv c? /
+COMMAND->pwd
+/home/js/cs100/origin/rshell/src
+COMMAND->cd a
+chdir
+: No such file or directory
+COMMAND->cd .&&pwd
+/home/js/cs100/origin/rshell/src
+COMMAND->pwd;&&cd ..&&pwd
+/home/js/cs100/origin/rshell/src
+/home/js/cs100/origin/rshell
+COMMAND->pwd; cd ..;pwd
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin
+COMMAND->car t try.cpp
+cat: try.cpp: 没有那个文件或目录
+COMMAND->cd rshell
+COMMAND->cat try.cpp
+#include <iostream>
+int main()
+{
+    while(1);
+
+    return 0;
+}
+COMMAND->g++ try.cpp
+COMMAND->./a.out
+^C
+
+
+
+
+
+
+
+COMMAND->COMMAND->COMMAND->/home/js/cs100/origin/rshell
+ls  ps
+  PID TTY          TIME CMD
+  962 pts/15   00:00:00 bash
+ 1014 pts/15   00:00:00 rshell
+ 1595 pts/15   00:00:00 rshell
+ 2046 pts/15   00:00:00 rshell
+ 2669 pts/15   00:00:00 ps
+COMMAND->ps: ;./a.out;ls
+  PID TTY          TIME CMD
+  962 pts/15   00:00:00 bash
+ 1014 pts/15   00:00:00 rshell
+ 1595 pts/15   00:00:00 rshell
+ 2046 pts/15   00:00:00 rshell
+ 2763 pts/15   00:00:00 ps
+execv fail: No such file or directory
+and_or.cpp  exe.cpp  getenv.cpp  lform.cpp  ls.h  main.cpp  nfork2.cpp	pipebuf.cpp  pipesetup.cpp  preop.cpp  presult.cpp  rshell.h  shll6comment.cpp	smcln.cpp
+COMMAND->exit
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ exit
+exit
+
+脚本完成，于 Sat 07 Mar 2015 12:50:13 AM PST
