@@ -71,6 +71,9 @@ COMMAND->ps: ;./a.out;ls
  2763 pts/15   00:00:00 ps
 execv fail: No such file or directory
 and_or.cpp  exe.cpp  getenv.cpp  lform.cpp  ls.h  main.cpp  nfork2.cpp	pipebuf.cpp  pipesetup.cpp  preop.cpp  presult.cpp  rshell.h  shll6comment.cpp	smcln.cpp
+COMMAND->cd /home/js/t
+chdir
+: Permission denied
 COMMAND->exit
 ]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ exit
 exit
