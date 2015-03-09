@@ -1,0 +1,61 @@
+脚本启动于 Sun 08 Mar 2015 11:57:29 PM PDT
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls
+a      bin	Makefile      piping.script  src	test exec~  try.cpp
+a.out  LICENSE	piping.scipt  README.md      test exec	tests
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat<a
+asdffg; ASDFFG;
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat<b
+cat: b: 没有那个文件或目录
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat <a  a
+asdffg; ASDFFG;
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat		<	a
+asdffg; ASDFFG;
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat <a|ca  tr a-  'a-z' 'A-A z Z'
+ASDFFG; ASDFFG;
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat <a >b
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat b <b
+asdffg; ASDFFG;
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat<b>>a
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat a
+asdffg; ASDFFG;
+asdffg; ASDFFG;
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat<b??  >>c
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat c
+asdffg; ASDFFG;
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat b		>>	c
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat a| tr 'a-z   A-Z' a 'a-z'|d cat. >d^[[D           |cata >d                        <a|tr 'A-Z" ' 'a-z'	| cat? ? >d
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat d
+asdffg; asdffg;
+asdffg; asdffg;
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls | cat >e
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat e
+a
+a.out
+b
+bin
+c
+d
+e
+LICENSE
+Makefile
+piping.scipt
+piping.script
+README.md
+src
+test exec
+test exec~
+tests
+try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd  |cat>f
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat f
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd|cat? ??  >>f
+js@js-Y40-70:/home/js/cs100/origin/rshell->cat f
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->exit
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ x[Kexit
+exit
+
+脚本完成，于 Mon 09 Mar 2015 12:04:57 AM PDT
