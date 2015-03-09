@@ -42,5 +42,3 @@ int pipesetup(char inputBuffer[],int* exitptr)//deal with pipe
     int status=exe(input,num,exitptr);
 	return status;
 }
-
-
