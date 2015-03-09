@@ -107,7 +107,7 @@ void handle_signal(int sig)
 	}
 }
 
-int exe(char *input[MAXLINE],int num)
+int exe(char *input[MAXLINE],int num,int *exitptr)
 {
 	//printf("pipe num is %d\n",num);
 	char *argv[MAXLINE/2-1][MAXLINE/2-1];
@@ -180,6 +180,14 @@ int exe(char *input[MAXLINE],int num)
 			{
 				printf("wrong > number!\n");
 				exit(1);
+			}
+			if(strcmp(argv[i][i1],"exit")==0)
+			{
+				if(num==1)
+				{	
+					*exitptr=1;
+				}
+				return 0;
 			}
 		}
 	}
@@ -445,7 +453,7 @@ int exe(char *input[MAXLINE],int num)
 
 
 	int status[MAXLINE];
-    	int sum=0;
+    int sum=0;
 	for (int i=0;i<num;i++)
 	{
 		if(-1==waitpid(pp[i],&status[i],0))

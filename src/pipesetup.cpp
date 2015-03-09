@@ -1,6 +1,6 @@
 #include "rshell.h"
 
-int pipesetup(char inputBuffer[])//deal with pipe
+int pipesetup(char inputBuffer[],int* exitptr)//deal with pipe
 {
 	char *p;//not malloc(MAXLINE*sizeof(char));
 	char *input[MAXLINE];
@@ -39,7 +39,7 @@ int pipesetup(char inputBuffer[])//deal with pipe
 	{
 		printf("input[%d]=%s\n",j,input[j]);// , mark[%d]=%d ,j,mark[j]
 	}*/
-    int status=exe(input,num);
+    int status=exe(input,num,exitptr);
 	return status;
 }
 

@@ -1,128 +1,423 @@
- Fri 23 Jan 2015 08:13:41 PM PST#my linux is Chinese verion, so some characters might not be able to display.
-]0;jysun@jysun-vir-machine: ~/cs100/rshell/testsjysun@jysun-vir-machine:~/cs100/rshell/tests$ make[K[K[K[Kcd ..
-]0;jysun@jysun-vir-machine: ~/cs100/rshelljysun@jysun-vir-machine:~/cs100/rshell$ make[K[K[K[Kls
-LICENSE  Makefile  README.md  [0m[01;34msrc[0m  [01;34mtests[0m
-]0;jysun@jysun-vir-machine: ~/cs100/rshelljysun@jysun-vir-machine:~/cs100/rshell$ me[Kake#makefile
-mkdir bin
-g++ -ansi -pedantic -Wall -Werror -c ./src/shll6comment.cpp ./src/rshell.h -o ./bin/shll6comment.o
-g++ -ansi -pedantic -Wall -Werror -c ./src/setup.cpp -o ./bin/setup.o
-g++ -ansi -pedantic -Wall -Werror -c ./src/and_or.cpp ./src/rshell.h -o ./bin/and_or.o
-g++ -ansi -pedantic -Wall -Werror -c ./src/smcln.cpp -o ./bin/smcln.o
-g++ ./src/shll6comment.cpp ./src/setup.cpp ./src/and_or.cpp ./src/smcln.cpp -o ./bin/rshell
-]0;jysun@jysun-vir-machine: ~/cs100/rshelljysun@jysun-vir-machine:~/cs100/rshell$ le[Ks
-[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
-]0;jysun@jysun-vir-machine: ~/cs100/rshelljysun@jysun-vir-machine:~/cs100/rshell$ ./bin/rshell#begin test
-COMMAND->ps#single command is ok
+脚本启动于 Sun 08 Mar 2015 11:27:42 PM PDT
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin.[K/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->   pwd ;
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->			pwd		;
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->bin; /ls
+a.out	bin	exec.script	LICENSE	Makefile	README.md	src	test exec~	test exec	tests	try.cpp	
+js@js-Y40-70:/home/js/cs100/origin/rshell->bin/ls;
+a.out	bin	exec.script	LICENSE	Makefile	README.md	src	test exec~	test exec	tests	try.cpp	
+js@js-Y40-70:/home/js/cs100/origin/rshell->bin/ls^[[D          		bin/ls	;
+a.out	bin	exec.script	LICENSE	Makefile	README.md	src	test exec~	test exec	tests	try.cpp	
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+.   a.out  exec.script	LICENSE   README.md  test exec	 tests
+..  bin    .git		Makefile  src	     test exec~  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -a -a -a -a -a -a -a -l -a -l -l-a   -a;
+总用量 60
+drwxrwxr-x 6 js js 4096 Mar  8 23:12 .
+drwxrwxr-x 3 js js 4096 Feb 22 01:15 ..
+-rwxrwxr-x 1 js js 8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js 4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js    0 Mar  8 23:27 exec.script
+drwxrwxr-x 8 js js 4096 Mar  7 00:53 .git
+-rw-rw-r-- 1 js js  177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js  633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js 1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js 4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js  550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js  538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js 4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js   64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -l
+总用量 48
+-rwxrwxr-x 1 js js 8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js 4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js    0 Mar  8 23:27 exec.script
+-rw-rw-r-- 1 js js  177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js  633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js 1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js 4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js  550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js  538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js 4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js   64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -al
+总用量 60
+drwxrwxr-x 6 js js 4096 Mar  8 23:12 .
+drwxrwxr-x 3 js js 4096 Feb 22 01:15 ..
+-rwxrwxr-x 1 js js 8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js 4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js    0 Mar  8 23:27 exec.script
+drwxrwxr-x 8 js js 4096 Mar  7 00:53 .git
+-rw-rw-r-- 1 js js  177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js  633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js 1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js 4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js  550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js  538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js 4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js   64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -a -l
+总用量 64
+drwxrwxr-x 6 js js  4096 Mar  8 23:12 .
+drwxrwxr-x 3 js js  4096 Feb 22 01:15 ..
+-rwxrwxr-x 1 js js  8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js  4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js 20480 Mar  8 23:29 exec.script
+drwxrwxr-x 8 js js  4096 Mar  7 00:53 .git
+-rw-rw-r-- 1 js js   177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js   633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js  1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js  4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js   550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js   538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js  4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js    64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->- ls # -a
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell-># ls
+js@js-Y40-70:/home/js/cs100/origin/rshell->#
+js@js-Y40-70:/home/js/cs100/origin/rshell->
+js@js-Y40-70:/home/js/cs100/origin/rshell->;
+js@js-Y40-70:/home/js/cs100/origin/rshell->  ;		;;
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;pwd;ls
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd	; pwd;	pwd
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;	exit
+/home/js/cs100/origin/rshell
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls  &&pwd
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls  	ls	&& pwd&& ls;
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd   ls -a&&pwd
+.   a.out  exec.script	LICENSE   README.md  test exec	 tests
+..  bin    .git		Makefile  src	     test exec~  try.cpp
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd&&exit
+/home/js/cs100/origin/rshell
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd||ls
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd	|| ls
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a||pwd
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a		||	pwd
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->lsa  a||exit
+ls: 无法访问a: 没有那个文件或目录
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->&&pwd
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->||pwd
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls&&pwd;pwd;pwd   ls a||pwd;ps
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
   PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9133 pts/0    00:00:00 ps
-COMMAND->ps;#semicolon is ok
+29502 pts/10   00:00:00 bash
+31118 pts/10   00:00:00 rshell
+31314 pts/10   00:00:00 ps
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a&&pwd;ls a||pwd;ps
+ls: 无法访问a: 没有那个文件或目录
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
   PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9135 pts/0    00:00:00 ps
-COMMAND->   ps  ;#front and rear blanks are ok
+29502 pts/10   00:00:00 bash
+31118 pts/10   00:00:00 rshell
+31463 pts/10   00:00:00 ps
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;ls||pwd
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;    ls a&&pwd
+ls: 无法访问a: 没有那个文件或目录
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a;pwd
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd; pwd&&ls a;pwd
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;ls&&exit;ps
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;ls||exit;ps
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
   PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9136 pts/0    00:00:00 ps
-COMMAND->   ps     #same without ; at end 
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9137 pts/0    00:00:00 ps
-COMMAND->	ps		;#test with backward tab
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9139 pts/0    00:00:00 ps
-COMMAND->		ps	#test with forward tab
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9140 pts/0    00:00:00 ps
-COMMAND-> ls   -a#single parameter
-.  ..  bin  .git  LICENSE  Makefile  README.md	src  tests
-COMMAND->  ls   -a  -l# multi parameters
-总用量 36
-drwxrwxr-x 6 jysun jysun 4096 Jan 23 20:14 .
-drwxrwxr-x 8 jysun jysun 4096 Jan 23 18:47 ..
-drwxrwxr-x 2 jysun jysun 4096 Jan 23 20:14 bin
-drwxrwxr-x 8 jysun jysun 4096 Jan 23 19:37 .git
--rw-rw-r-- 1 jysun jysun  177 Jan 23 12:03 LICENSE
--rw-rw-r-- 1 jysun jysun  683 Jan 23 18:32 Makefile
--rw-rw-r-- 1 jysun jysun   70 Jan 23 15:05 README.md
-drwxrwxr-x 2 jysun jysun 4096 Jan 23 20:05 src
-drwxrwxr-x 2 jysun jysun 4096 Jan 23 20:13 tests
-COMMAND->  ls -al#multi parameter other version
-总用量 36
-drwxrwxr-x 6 jysun jysun 4096 Jan 23 20:14 .
-drwxrwxr-x 8 jysun jysun 4096 Jan 23 18:47 ..
-drwxrwxr-x 2 jysun jysun 4096 Jan 23 20:14 bin
-drwxrwxr-x 8 jysun jysun 4096 Jan 23 19:37 .git
--rw-rw-r-- 1 jysun jysun  177 Jan 23 12:03 LICENSE
--rw-rw-r-- 1 jysun jysun  683 Jan 23 18:32 Makefile
--rw-rw-r-- 1 jysun jysun   70 Jan 23 15:05 README.md
-drwxrwxr-x 2 jysun jysun 4096 Jan 23 20:05 src
-drwxrwxr-x 2 jysun jysun 4096 Jan 23 20:13 tests
-COMMAND->ls    -a    -a    -a    -a#repeat same parameters
-.  ..  bin  .git  LICENSE  Makefile  README.md	src  tests
-COMMAND->ps&&ps# &&
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9149 pts/0    00:00:00 ps
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9150 pts/0    00:00:00 ps
-COMMAND->ps&ps# &
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9152 pts/0    00:00:00 ps
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9153 pts/0    00:00:00 ps
-COMMAND->ps||ps# ||
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9154 pts/0    00:00:00 ps
-COMMAND->ps|ps# |
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9155 pts/0    00:00:00 ps
-COMMAND->sp||ls&&pwd# combination of && and ||
-execvp fail: No such file or directory
-bin  LICENSE  Makefile	README.md  src	tests
-/home/jysun/cs100/rshell
-COMMAND->	sp;ps  &&pwd;   ls ||pwd# combination of && || ;
-execvp fail: No such file or directory
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9163 pts/0    00:00:00 ps
-/home/jysun/cs100/rshell
-bin  LICENSE  Makefile	README.md  src	tests
-COMMAND->ps&&&ps# &&&
-  PID TTY          TIME CMD
- 9088 pts/0    00:00:00 bash
- 9132 pts/0    00:00:00 rshell
- 9166 pts/0    00:00:00 ps
-COMMAND->sl|||ls#  |||
-execvp fail: No such file or directory
-bin  LICENSE  Makefile	README.md  src	tests
-COMMAND->;;#several NULL
-COMMAND->	; ;	;#several blanks
-COMMAND->ls  &exit# exit in combination , not work
-bin  LICENSE  Makefile	README.md  src	tests
-execvp fail: No such file or directory
-COMMAND->exit# exit function
-]0;jysun@jysun-vir-machine: ~/cs100/rshelljysun@jysun-vir-machine:~/cs100/rshell$ exit
+29502 pts/10   00:00:00 bash
+31899 pts/10   00:00:00 rshell
+31983 pts/10   00:00:00 ps
+js@js-Y40-70:/home/js/cs100/origin/rshell->ps wd;la s a||exit;ps
+/home/js/cs100/origin/rshell
+ls: 无法访问a: 没有那个文件或目录
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin.[K/rshellls[K[K
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a;exit
+ls: 无法访问a: 没有那个文件或目录
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->exit 1
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ exit
 exit
 
- Fri 23 Jan 2015 08:19:10 PM PST
+脚本完成，于 Sun 08 Mar 2015 11:37:45 PM PDT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[18Preverse-i-search)`script ': cat [C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ cat signal.script [8Pgit status[K[K[K[K[K[K[K[K[K[Kscript exec.c[Kscript
+脚本已启动，文件为 exec.script
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin.[K/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->   pwd ;
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->			pwd		;
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->bin; /ls
+a.out	bin	exec.script	LICENSE	Makefile	README.md	src	test exec~	test exec	tests	try.cpp	
+js@js-Y40-70:/home/js/cs100/origin/rshell->bin/ls;
+a.out	bin	exec.script	LICENSE	Makefile	README.md	src	test exec~	test exec	tests	try.cpp	
+js@js-Y40-70:/home/js/cs100/origin/rshell->bin/ls^[[D          		bin/ls	;
+a.out	bin	exec.script	LICENSE	Makefile	README.md	src	test exec~	test exec	tests	try.cpp	
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+.   a.out  exec.script	LICENSE   README.md  test exec	 tests
+..  bin    .git		Makefile  src	     test exec~  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -a -a -a -a -a -a -a -l -a -l -l-a   -a;
+总用量 60
+drwxrwxr-x 6 js js 4096 Mar  8 23:12 .
+drwxrwxr-x 3 js js 4096 Feb 22 01:15 ..
+-rwxrwxr-x 1 js js 8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js 4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js    0 Mar  8 23:27 exec.script
+drwxrwxr-x 8 js js 4096 Mar  7 00:53 .git
+-rw-rw-r-- 1 js js  177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js  633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js 1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js 4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js  550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js  538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js 4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js   64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -l
+总用量 48
+-rwxrwxr-x 1 js js 8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js 4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js    0 Mar  8 23:27 exec.script
+-rw-rw-r-- 1 js js  177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js  633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js 1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js 4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js  550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js  538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js 4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js   64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -al
+总用量 60
+drwxrwxr-x 6 js js 4096 Mar  8 23:12 .
+drwxrwxr-x 3 js js 4096 Feb 22 01:15 ..
+-rwxrwxr-x 1 js js 8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js 4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js    0 Mar  8 23:27 exec.script
+drwxrwxr-x 8 js js 4096 Mar  7 00:53 .git
+-rw-rw-r-- 1 js js  177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js  633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js 1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js 4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js  550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js  538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js 4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js   64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls -a -l
+总用量 64
+drwxrwxr-x 6 js js  4096 Mar  8 23:12 .
+drwxrwxr-x 3 js js  4096 Feb 22 01:15 ..
+-rwxrwxr-x 1 js js  8812 Mar  7 00:48 a.out
+drwxrwxr-x 2 js js  4096 Mar  8 23:26 bin
+-rw-rw-r-- 1 js js 20480 Mar  8 23:29 exec.script
+drwxrwxr-x 8 js js  4096 Mar  7 00:53 .git
+-rw-rw-r-- 1 js js   177 Feb 22 00:50 LICENSE
+-rw-rw-r-- 1 js js   633 Mar  6 20:12 Makefile
+-rw-rw-r-- 1 js js  1618 Feb 22 00:50 README.md
+drwxrwxr-x 2 js js  4096 Mar  8 23:25 src
+-rw-rw-r-- 1 js js   550 Mar  8 23:12 test exec
+-rw-rw-r-- 1 js js   538 Mar  8 23:11 test exec~
+drwxrwxr-x 2 js js  4096 Mar  7 00:51 tests
+-rw-rw-r-- 1 js js    64 Mar  6 23:19 try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->- ls # -a
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell-># ls
+js@js-Y40-70:/home/js/cs100/origin/rshell->#
+js@js-Y40-70:/home/js/cs100/origin/rshell->
+js@js-Y40-70:/home/js/cs100/origin/rshell->;
+js@js-Y40-70:/home/js/cs100/origin/rshell->  ;		;;
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;pwd;ls
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd	; pwd;	pwd
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;	exit
+/home/js/cs100/origin/rshell
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls  &&pwd
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls  	ls	&& pwd&& ls;
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd   ls -a&&pwd
+.   a.out  exec.script	LICENSE   README.md  test exec	 tests
+..  bin    .git		Makefile  src	     test exec~  try.cpp
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd&&exit
+/home/js/cs100/origin/rshell
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd||ls
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd	|| ls
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a||pwd
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a		||	pwd
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->lsa  a||exit
+ls: 无法访问a: 没有那个文件或目录
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->&&pwd
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->||pwd
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls&&pwd;pwd;pwd   ls a||pwd;ps
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+  PID TTY          TIME CMD
+29502 pts/10   00:00:00 bash
+31118 pts/10   00:00:00 rshell
+31314 pts/10   00:00:00 ps
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a&&pwd;ls a||pwd;ps
+ls: 无法访问a: 没有那个文件或目录
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+  PID TTY          TIME CMD
+29502 pts/10   00:00:00 bash
+31118 pts/10   00:00:00 rshell
+31463 pts/10   00:00:00 ps
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;ls||pwd
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;    ls a&&pwd
+ls: 无法访问a: 没有那个文件或目录
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a;pwd
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd; pwd&&ls a;pwd
+/home/js/cs100/origin/rshell
+/home/js/cs100/origin/rshell
+ls: 无法访问a: 没有那个文件或目录
+/home/js/cs100/origin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;ls&&exit;ps
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->pwd;ls||exit;ps
+/home/js/cs100/origin/rshell
+a.out  bin  exec.script  LICENSE  Makefile  README.md  src  test exec  test exec~  tests  try.cpp
+  PID TTY          TIME CMD
+29502 pts/10   00:00:00 bash
+31899 pts/10   00:00:00 rshell
+31983 pts/10   00:00:00 ps
+js@js-Y40-70:/home/js/cs100/origin/rshell->ps wd;la s a||exit;ps
+/home/js/cs100/origin/rshell
+ls: 无法访问a: 没有那个文件或目录
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin.[K/rshellls[K[K
+js@js-Y40-70:/home/js/cs100/origin/rshell->ls a;exit
+ls: 无法访问a: 没有那个文件或目录
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ bin/rshell
+js@js-Y40-70:/home/js/cs100/origin/rshell->exit 1
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ exit
+exit
+脚本完成，文件为  exec.script
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ git status
+位于分支 signal
+尚未暂存以备提交的变更：
+  （使用 "git add <file>..." 更新要提交的内容）
+  （使用 "git checkout -- <file>..." 丢弃工作区的改动）
+
+	[31m修改:         src/and_or.cpp[m
+	[31m修改:         src/exe.cpp[m
+	[31m修改:         src/pipesetup.cpp[m
+	[31m修改:         src/rshell.h[m
+	[31m修改:         src/shll6comment.cpp[m
+
+未跟踪的文件:
+  （使用 "git add <file>..." 以包含要提交的内容）
+
+	[31ma.out[m
+	[31mbin/[m
+	[31mexec.script[m
+	[31msrc/and_or.cpp~[m
+	[31msrc/exe.cpp~[m
+	[31msrc/pipesetup.cpp~[m
+	[31msrc/rshell.h~[m
+	[31msrc/shll6comment.cpp~[m
+	[31msrc/smcln.cpp~[m
+	[31mtest exec[m
+	[31mtest exec~[m
+	[31mtry.cpp[m
+
+修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ git a[K[K[K[K[Kgit status
+位于分支 signal
+尚未暂存以备提交的变更：
+  （使用 "git add <file>..." 更新要提交的内容）
+  （使用 "git checkout -- <file>..." 丢弃工作区的改动）
+
+	[31m修改:         src/and_or.cpp[m
+	[31m修改:         src/exe.cpp[m
+	[31m修改:         src/pipesetup.cpp[m
+	[31m修改:         src/rshell.h[m
+	[31m修改:         src/shll6comment.cpp[m
+	[31m修改:         tests/exec.script[m
+
+未跟踪的文件:
+  （使用 "git add <file>..." 以包含要提交的内容）
+
+	[31ma.out[m
+	[31mbin/[m
+	[31msrc/and_or.cpp~[m
+	[31msrc/exe.cpp~[m
+	[31msrc/pipesetup.cpp~[m
+	[31msrc/rshell.h~[m
+	[31msrc/shll6comment.cpp~[m
+	[31msrc/smcln.cpp~[m
+	[31mtest exec[m
+	[31mtest exec~[m
+	[31mtry.cpp[m
+
+修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）
+]0;js@js-Y40-70: ~/cs100/origin/rshelljs@js-Y40-70:~/cs100/origin/rshell$ git add src/s[Kand_or.cpp src/exe.cpp s[Ksrc/pipesetup.cpp s

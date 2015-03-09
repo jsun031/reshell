@@ -71,9 +71,11 @@ int and_or(char* inputBuffer)
 	int mark=0;//true, need to continue
 	/*for (int j=0;j<i;j++)
 	        printf("input[%d]=%s\n",j,input[j]);*/
+	int if_exit=0;
+	int *exitptr=&if_exit;
 	for (int j=0;(j<i)&&(mark==0);j++)
 	{
-		result=pipesetup(input[j]);
+		result=pipesetup(input[j],exitptr);
         //printf("input[%d] return value is %d\n",j,result);
    		if (flag[j]==0)
 		{
@@ -82,6 +84,10 @@ int and_or(char* inputBuffer)
 		else if(flag[j]==1)
 		{
 			mark=(result==0);
+		}
+		if(if_exit==1)
+		{
+			exit(0);
 		}
 		//printf("execvp status%d\n",result);
 	}
