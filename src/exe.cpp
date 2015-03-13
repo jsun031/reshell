@@ -89,8 +89,8 @@ int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 			}
 	            	if(i3>0)
 	            	{
-	                i4=1;
-	            }
+	                	i4=1;
+	            	}
 		}
 	}
 	return i4;
