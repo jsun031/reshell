@@ -441,7 +441,7 @@ int exe(char *input[MAXLINE],int num,int *exitptr)
 			perror("error");
 			exit(1);
 		}
-        sum=sum+status[i];
+        	sum=sum+status[i];
 	}
 	return sum;
 }
