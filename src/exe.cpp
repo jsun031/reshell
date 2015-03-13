@@ -4,12 +4,12 @@ int childp1;
 
 int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 {
-    char *once;
-    char Buffer[MAXLINE];
+	char *once;
+	char Buffer[MAXLINE];
 	char *getenvBuffer;
 	once=getenv("PATH"); /* get the comspec environment parameter */
-    strcpy(Buffer,once);
-    getenvBuffer=Buffer;
+	strcpy(Buffer,once);
+	getenvBuffer=Buffer;
 	char *p;//not malloc(MAXLINE*sizeof(char));
 	char *input[MAXLINE];
 	int num=0;
@@ -76,7 +76,7 @@ int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 				{
 					strcpy(key_name,dir_name[i2]);
 					strcat(key_name,argv);
-                    i3++;
+                    			i3++;
 				}
 			}
 			if(errno!=0)
@@ -87,10 +87,10 @@ int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 				perror("readdir erroe!");
 				exit(1);
 			}
-            if(i3>0)
-            {
-                i4=1;
-            }
+	            	if(i3>0)
+	            	{
+	                i4=1;
+	            }
 		}
 	}
 	return i4;
