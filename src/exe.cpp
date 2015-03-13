@@ -49,7 +49,7 @@ int setpath(char *dir_name[],char *argv,char *key_name)//deal with pipe
 		strcat(dir_name[j],"/");
 		//printf("input[%d]=%s\n",j,input[j]);// , mark[%d]=%d ,j,mark[j]
 	}
-    int i4=0;
+	int i4=0;
 	for (int i2=0;i2<num;i2++)
 	{
 		DIR *dirptr = NULL;
@@ -239,7 +239,7 @@ int exe(char *input[MAXLINE],int num,int *exitptr)
  					arr[tmp++]=argv[i][j];
  				}
  			}
-            arr[tmp]='\0';//exe requires last argument to be null
+        		arr[tmp]='\0';//exe requires last argument to be null
  			if(gt_exist[i]==0)
  			{
 				if (i!=num-1)// | mark[i]==5&&
@@ -286,29 +286,16 @@ int exe(char *input[MAXLINE],int num,int *exitptr)
 					gt_exist[i]=0;
 				}
 			}
-
-            //char s[100];
-
-            if(strcmp(arr[0],"cd")==0)
-            {
-                //printf("current working directory: %s\n", getcwd(s,100));
-                if(chdir(arr[1])!=0)
-                {
-                    perror("chdir\n");
-                    exit(1);
-                }
-                //printf("current working directory: %s\n", getcwd(s,100));
-                //chdir(".");
-                /*for (int i0=0;i0<length[i];i0++)
-                {
-                    memset(argv[i][i0],0,strlen(argv[i][i0]));
-                }*/
-                return 0;
-            }
-            //else
-            //{
-            //    chdir(".");
-            //}
+	            	if(strcmp(arr[0],"cd")==0)
+	            	{
+	                	//printf("current working directory: %s\n", getcwd(s,100));
+	                	if(chdir(arr[1])!=0)
+	                	{
+	                	    perror("chdir\n");
+	                	    exit(1);
+	                	}
+	                	return 0;
+	            	}
 			char separatestring[MAXNUM][MAXLINE];
 			char *dir_name[MAXNUM];
 			for(int i1=0;i1<MAXNUM;i1++)
@@ -325,13 +312,6 @@ int exe(char *input[MAXLINE],int num,int *exitptr)
 		   	int num=setpath(dir_name,arr[0],key);
 			if(num!=0)
 			{
-                //printf("path=%s\n",getenv("PATH"));
-                //for(int i5=0;i5<length[i];i5++)
-                //    printf("key=%s,arr[%d][%d]=%s\n",key,i,i5,arr[i5]);
-				//if(execvp(arr[0],arr)!=0)//else is no used, even if succeed,
-                //strcpy(arr[0],"/bin/ls");
-                //strncat(arr[0],"\0",1);
-             //   printf("current working directory: %s\n", getcwd(s,100));
 				if(execv(key,arr)!=0)
 				{
 					perror("execv fail");
@@ -453,7 +433,7 @@ int exe(char *input[MAXLINE],int num,int *exitptr)
 
 
 	int status[MAXLINE];
-    int sum=0;
+	int sum=0;
 	for (int i=0;i<num;i++)
 	{
 		if(-1==waitpid(pp[i],&status[i],0))
